@@ -13,20 +13,23 @@ $(document).ready(function(){
 	}
 	];
 
-	for(var i = 0; i < tasks.length; i++){
-		var newHtml = template(tasks[i]);
-		$(".display").append(newHtml);
-		console.log(newHtml);
-	}
-
-	$(".subAdd").on("click", function(){
-		var newTask = {
-			name: $(".taskName").val(),
-			complete: false
+	var render = function(){
+		$(".display").empty();
+		for(var i = 0; i < tasks.length; i++){
+			var newHtml = template(tasks[i]);
+			$(".display").append(newHtml);
 		}
 		$(".taskName").val("");
-		newHtml = template(newTask);
-		$(".display").append(newHtml);
-	});
+	};
 
+	$(document).keypress(function(e){
+		if(e.which === 13 && $(".taskName").val() != ""){
+			var newTask = {
+				name: $(".taskName").val(),
+				complete: false
+			}
+			tasks.push(newTask),
+			render()
+		}
+	});
 });

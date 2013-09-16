@@ -1,0 +1,47 @@
+<html>
+<head>
+  <title>Javascrsipt Bare</title>
+</head>
+<body>
+
+<script type="text/javascript">
+var Electronic = function(type){
+	this.type = type;
+	this.active = false;
+	this.switch = function(switches){
+		this.active = switches;
+	};
+};
+
+var Phone = function(name){
+	Electronic.call(this);
+	this.name = name;
+	this.type = "phone";
+	this.call = function(){
+		console.log("Ring Ring!");
+	};
+	
+};
+
+var Nexus = function(owner){
+	Phone.call(this);
+	this.owner = owner;
+	this.name = "Nexus";
+};
+
+var computer = new Electronic('computer');
+console.log("It should be of type computer:", computer.type);
+
+var phone = new Phone('iPhone');
+console.log("\nIt should be of type phone:", phone.type);
+console.log("It should be named iPhone:", phone.name);
+
+var phone = new Nexus('Bob');
+console.log("\nIt should be of type phone:", phone.type);
+console.log("It should be named Nexus:", phone.name);
+console.log("Its owner should be Bob:", phone.owner);
+
+</script>
+
+</body>
+</html>

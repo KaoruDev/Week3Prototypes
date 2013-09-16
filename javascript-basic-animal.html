@@ -1,0 +1,63 @@
+<html>
+<head>
+  <title>Javascrsipt Bare</title>
+</head>
+<body>
+
+<script type="text/javascript">
+  alert('Hello World!');
+
+ //  var Animal = function (type) {
+ //  	this.type = type;
+	// };
+
+	// Animal.prototype.identify = function () {
+	//   return("It's a " + this.type);
+	// };
+	// Animal.prototype.hasClaws = false;
+
+	// var fish = new Animal('fish');
+	
+	// console.log("What is it?", fish.identify());
+	// console.log("Does the fish have claws?", fish.hasClaws);
+
+	// var cat = new Animal('cat');
+	// console.log("What is it?", cat.identify());
+	// console.log("Does the cat have claws?", cat.hasClaws);
+
+	// cat.hasClaws = true;
+	// console.log("Now does the cat have claws?", cat.hasClaws);
+	// console.log("What about the fish?", fish.hasClaws);
+
+	var Animal = function (type) {
+	  this.type = type;
+	};
+	Animal.prototype.identify = function () {
+	  return "It's a " + this.type;
+	};
+
+
+	var Mammal = function (type) {
+	  Animal.call(this, type);
+	};
+	Mammal.prototype = new Animal();
+	Mammal.prototype.hasFur = true;
+
+
+	var Cat = function (name) {
+	  Mammal.call(this, 'cat');
+	  this.name = name;
+	};
+	Cat.prototype = new Mammal();
+
+
+	var marlin = new Cat('Marlin');
+	console.log("What is it?", marlin.identify());
+	console.log(marlin.type);
+	console.log("What's its name?", marlin.name);
+	console.log("Does it have fur?", marlin.hasFur);
+
+</script>
+
+</body>
+</html>

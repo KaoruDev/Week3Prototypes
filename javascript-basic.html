@@ -1,0 +1,70 @@
+<html>
+<head>
+  <title>Javascrsipt Bare</title>
+</head>
+<body>
+
+<script type="text/javascript">
+  alert('Hello World!');
+
+  var Person = function (name) {
+	  this.name = name;
+	  // this.network = [];
+	  // this.meet = function (otherPerson) {
+	  //   this.network.push(otherPerson);
+	  //   otherPerson.network.push(this);
+	  // };
+	  // this.inNetwork = function (otherPerson) {
+	  //   for (var i = 0; i < this.network.length; i += 1) {
+	  //     if (this.network[i].name === otherPerson.name) {
+	  //       return true;
+	  //     }
+	  //   }
+	  //   return false;
+	  // };
+	};
+
+	Person.prototype.network = [];
+	Person.prototype.meet = function (otherPerson) {
+	    this.network.push(otherPerson);
+	    otherPerson.network.push(this);
+	  };
+	Person.prototype.inNetwork = function (otherPerson) {
+	    for (var i = 0; i < this.network.length; i += 1) {
+	      if (this.network[i].name === otherPerson.name) {
+	        return true;
+	      }
+	    }
+	    return false;
+	  };
+
+	var alice = new Person('Alice');
+	var bob = new Person('Bob');
+
+	console.log("Alice should have a network size of 0:", alice.network.length);
+	console.log("Bob should have a network size of 0:", bob.network.length);
+
+	alice.meet(bob);
+	console.log("Alice should have a network size of 1:", alice.network.length);
+	console.log("Bob should have a network size of 1:", bob.network.length);
+
+	console.log("Is Bob in Alice's network?", alice.inNetwork(bob));
+	console.log("Is Alice in Bob's network?", bob.inNetwork(alice));
+
+
+	var incrementWins = function (amount) {
+	  this.wins += amount;
+	};
+
+	var game = {
+	  wins: 0
+	};
+
+	incrementWins.call(game, 7);
+
+	alert('Number of wins: ' + game.wins);
+
+</script>
+
+</body>
+</html>

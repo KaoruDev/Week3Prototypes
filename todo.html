@@ -5,10 +5,25 @@
 <script src="http://cdnjs.cloudflare.com/ajax/libs/underscore.js/1.4.4/underscore-min.js"></script>
 
 <script src="todo.js"></script>
+
+<style type="text/css">
+	table{
+		border-collapse: collapse;
+	}
+	td{
+		margin: 10px;
+		padding: 10px 20px;
+		width: 100px;
+		border: black thin solid;
+	}
+</style>
+
 </header>
 <body>
-	Task Name:<input type="text"></input><br>
-	<button> Add task!</button>
+	Task Name:<input type="text" class="taskName"></input><br>
+	<button class="subAdd"> Add task!</button>
+
+	<div class="display"></div>
 
 
 	<div id="template">

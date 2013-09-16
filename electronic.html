@@ -8,25 +8,24 @@
 var Electronic = function(type){
 	this.type = type;
 	this.active = false;
-	this.switch = function(switches){
-		this.active = switches;
-	};
+};
+
+Electronic.prototype.switch = function(switches){
+	this.active = switches;
 };
 
 var Phone = function(name){
-	Electronic.call(this);
-	this.name = name;
-	this.type = "phone";
-	this.call = function(){
-		console.log("Ring Ring!");
-	};
-	
+	Electronic.call(this, "Phone");
+	this.name = name;	
+};
+
+Phone.prototype.call = function(){
+	console.log("Ring Ring!");
 };
 
 var Nexus = function(owner){
-	Phone.call(this);
+	Phone.call(this, "Nexus");
 	this.owner = owner;
-	this.name = "Nexus";
 };
 
 var computer = new Electronic('computer');

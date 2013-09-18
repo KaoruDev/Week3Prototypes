@@ -4,7 +4,7 @@
 <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
 <script src="http://cdnjs.cloudflare.com/ajax/libs/underscore.js/1.4.4/underscore-min.js"></script>
 
-<script src="todo.js"></script>
+<script src="todo3.js"></script>
 
 <link rel="stylesheet" text="text/css" href="todo.css">
 
@@ -26,7 +26,12 @@
 	<div id="template">
 		<script type="text/templates" class="box">
 			<div class="itemName">
-				<input type="checkbox" class="item"></input><%= name %>
+				<input type="checkbox" class="item" data-name="<%= name %>"></input><%= name %>
+			</div>
+		</script>
+		<script type="text/templates" class="edit">
+			<div class="editIput">
+				<input type="text" val="<% name >"></input>&nbsp;<button class="editBtn">Done</button>
 			</div>
 		</script>
 	</div>

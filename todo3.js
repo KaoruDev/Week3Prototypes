@@ -3,6 +3,9 @@ $(document).ready(function(){
 	var template = _.template(html);
 	var itemsDone = 0;
 
+	var htmlEdit = $("#template .edit").html();
+	var templateEdit = _.template(htmlEdit);
+
 	var tasks = [
 	{
 		name: "Create TODO list",
@@ -23,24 +26,25 @@ $(document).ready(function(){
 		$(".taskName").val("");
 		itemsDone = $(".item:checkbox:not(:checked)").length;
 		$(".totItems").text(itemsDone);
-		$(".item").on("click", function(){
-			itemsDone = $(".item:checkbox:not(:checked)").length;
-			$(".totItems").text(itemsDone);
-		});
 		$(".allDone").prop("checked", false);
-
 	};
 
+	$(document).on("click", ".itemName", function(){
+		var isChecked = $(this).find(".item").prop("checked"); // Gets what the current state is.
+		$(this).find(".item").prop("checked", !isChecked); // Sets the checked opposite to what it is currently set to.
+		itemsDone = $(".item:checkbox:not(:checked)").length;
+		$(".totItems").text(itemsDone);
+	});
+
 	$(".allDone").on("click", function(){
-		if($(".item").prop('checked')){
-			$(".item").prop('checked', false);
+		if($(".allDone").prop('checked')){
+			$(".item").prop('checked', true);		
 		}
 		else{
-			$(".item").prop('checked', true);
+			$(".item").prop('checked', false);
 		}
 		itemsDone = $(".item:checkbox:not(:checked)").length;
 		$(".totItems").text(itemsDone);
-
 	});
 
 	$(document).keypress(function(e){
@@ -48,9 +52,9 @@ $(document).ready(function(){
 			var newTask = {
 				name: $(".taskName").val(),
 				complete: false
-			}
-			tasks.push(newTask),
-			render()
+			};
+			tasks.push(newTask);
+			render();
 		}
 	});
 
@@ -60,5 +64,11 @@ $(document).ready(function(){
 		}
 		$(".taskName").css("font-style", "normal");
 		$(".taskName").css("color", "#000");
+	});
+
+	$(document).on("dblclick", ".itemName", function(){
+		var text = $(this).find(data("name"))
+		var newHtml = templateEdit({name: text});
+		$(this).html(newHtml);
 	});
 });

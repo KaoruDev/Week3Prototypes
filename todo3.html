@@ -1,0 +1,36 @@
+<!doctype html>
+<html>
+<title>To Do list!</title>
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+<script src="http://cdnjs.cloudflare.com/ajax/libs/underscore.js/1.4.4/underscore-min.js"></script>
+
+<script src="todo.js"></script>
+
+<link rel="stylesheet" text="text/css" href="todo.css">
+
+</header>
+<body>
+	<div class="box">
+	<h1> Todos</h1>
+
+	<input type="text" class="taskName" value="What needs to be done?"></input>
+	<input type="checkbox" class="allDone"><span class="allDoneText">Mark all as complete</span></input>
+	<div class="display"></div>
+	<footer><span class="totItems">0</span> items left</footer>
+	</div>
+	
+
+
+
+
+	<div id="template">
+		<script type="text/templates" class="box">
+			<div class="itemName">
+				<input type="checkbox" class="item"></input><%= name %>
+			</div>
+		</script>
+	</div>
+
+
+</body>
+</html>
